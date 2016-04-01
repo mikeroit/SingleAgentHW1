@@ -7,6 +7,8 @@
 
 #endif //SINGLEAGENTHW1_SIMPLEQ_H
 
+using namespace std;
+
 //-------------------------------------------------------------------------------------------------------
 template <typename T>
 class simpleQ{
@@ -14,7 +16,7 @@ class simpleQ{
     public:
         simpleQ();
         ~simpleQ();
-        simpleQ(const SharedQueue& a);
+        simpleQ(const simpleQ& a);
 
 //      return true if the queue is empty
         bool IsEmpty() const;

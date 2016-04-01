@@ -9,6 +9,8 @@
 #endif //SINGLEAGENTHW1_GRID_H
 
 #include <stdint.h>
+#include <iostream>
+#include <vector>
 
 //Grid class implements all elements of 2d grid domain
 
@@ -26,9 +28,9 @@ public:
     Grid(int size){sideLen = size;}
 
 //  public functions utilized by algorithm
-    void GetActions(uint32_t &nodeID, std::vector<MyAction> &actions);
-    void ApplyAction(uint32_t &s, MyAction a);
-    void UndoAction(uint32_t &s, MyAction a);
+    void GetActions(uint32_t &nodeID, std::vector<int> &actions);
+    void ApplyAction(uint32_t &s, int action);
+    void UndoAction(uint32_t &s, int action);
 
 private:
 //  Given the implicit nature of the problem, the only required info

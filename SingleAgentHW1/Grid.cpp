@@ -10,14 +10,20 @@
 //-------------------------------------------------------------------------
 //Public Methods:
 
+void GetActions(uint32_t &nodeID, std::vector<int> &actions){
 
-
-void GetActions(uint32_t &nodeID, std::vector<MyAction> &actions){
-
+//  fetch x and y coord of current state
     int x, y;
     x = getX(nodeID);
     y = getY(nodeID);
 
+//  test to see if moving up/right is legal, add legal moves
+    if(x + 1 < sideLen){
+        actions.insert(x + 1);
+    }
+    if((y + 1) < sideLen){
+        actions.insert(y + sideLen);
+    }
 }
 
 void ApplyAction(uint32_t &s, MyAction a){
