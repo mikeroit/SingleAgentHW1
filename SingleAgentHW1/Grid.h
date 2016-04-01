@@ -7,9 +7,8 @@
 #define SINGLEAGENTHW1_GRID_H
 
 #endif //SINGLEAGENTHW1_GRID_H
-
-#include <stdint.h>
 #include <iostream>
+#include <stdint.h>
 #include <vector>
 
 //Grid class implements all elements of 2d grid domain
@@ -29,8 +28,10 @@ public:
 
 //  public functions utilized by algorithm
     void GetActions(uint32_t &nodeID, std::vector<int> &actions);
-    void ApplyAction(uint32_t &s, int action);
-    void UndoAction(uint32_t &s, int action);
+    void ApplyAction(uint32_t &state, int action);
+    void UndoAction(uint32_t &state, int action);
+
+    int getLen(){return sideLen;}
 
 private:
 //  Given the implicit nature of the problem, the only required info
@@ -39,8 +40,8 @@ private:
 
 //  Private methods will be used to parse the node addresses from uint32_t
 //  --> x/y values
-    int getX(uint16_t &nodeID);
-    int getY(uint16_t &nodeID);
+    int getX(uint32_t &nodeID);
+    int getY(uint32_t &nodeID);
 
 };
 //-------------------------------------------------------------------------

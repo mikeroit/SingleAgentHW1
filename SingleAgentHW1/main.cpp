@@ -1,11 +1,8 @@
 #include <iostream>
-#include <stdint.h>
 #include <cmath>
 #include "simpleQ.h"
 #include "Grid.h"
 
-#include <math.h>
-#include <vector>
 
 using namespace std;
 
@@ -48,7 +45,8 @@ int main() {
 //-----------------------------------------   *** TESTING FOR 'Grid' *** --------------------------------------------
 
 //  0) make a Grid to test on
-    Grid *testG = new Grid(100);
+    Grid testG = Grid(100);
+    cout << testG.getLen();
 
 //  1) test GetActions
 
@@ -61,15 +59,12 @@ int main() {
     uint32_t seventy_hundred = ((70 << 16) | 100);
 
     cout << "Testing non-corner cases using: \n (8,8), (9,12), (70,16)" << endl;
-    testG->GetActions(eight_eight, myActions);
+    testG.GetActions(eight_eight, myActions);
     cout << "Legal moves generated for (8,8):" << endl;
     for(int n : myActions){
         cout << n << ", ";
     }
     cout << endl;
-
-
-
 
 //-----------------------------------------   *** TESTING FOR 'Grid' *** --------------------------------------------
 
