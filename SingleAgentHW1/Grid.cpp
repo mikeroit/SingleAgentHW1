@@ -10,6 +10,8 @@
 //-------------------------------------------------------------------------
 //Public Methods:
 
+
+
 void GetActions(uint32_t &nodeID, std::vector<MyAction> &actions){
 
     int x, y;
@@ -30,10 +32,12 @@ void UndoAction(uint32_t &s, MyAction a){
 
 //Private methods:
 
+//Converts ID to x coord
 int Grid::getX(uint16_t &nodeID){
     return (nodeID >> 16);
 }
 
+//Converts ID to y coord
 int Grid::getY(uint16_t &nodeID){
     return (nodeID & 0x0000ffff);
 }
