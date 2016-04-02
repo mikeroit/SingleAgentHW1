@@ -56,7 +56,6 @@ BFS<environment>::BFS(environment *e, int goal){
 
 //      remove head of list and add to closed
         openList->Remove(stateToExpand); nodesExpanded++;
-        cout << (stateToExpand >> 16) << ", " << (stateToExpand & 0x0000ffff) << endl;
         //openList->Print();
         //cout << endl;
         closedList->Add(stateToExpand);
@@ -85,7 +84,7 @@ BFS<environment>::BFS(environment *e, int goal){
         }
     }
 
-    cout << "Found goal after expanding " << nodesExpanded << " nodes" << endl;
+    cout << "Found goal after expanding " << nodesExpanded << " nodes (BFS)" << endl;
 };
 //----------------------------------------------------------------------------------------------
 
@@ -104,7 +103,7 @@ public:
 
 private:
 
-    void DLS(environment *e, uint32_t state, uint32_t goal, int depth);
+    void DLS(environment *e, uint32_t state, uint32_t goal, int depth, bool &found);
 
 //  queues to manage space complexity during pathfinding
     simpleQ<uint32_t>* depthStack;
@@ -118,31 +117,59 @@ private:
 
 //----------------------------------------------------------------------------------------------
 template <typename environment>
-DFID::DFID<environment>(environment *e, uint32_t goal){
+DFID<environment>::DFID(environment *e, uint32_t goal){
+
+    nodesExpanded = 0;
+    int x = 1;
+    bool found = false;
+    uint32_t temp = 0;
+    while(!found){
+        DLS(e, 0, goal, x, found);
+        x++;
+    }
+
+    cout << "Found goal after expanding " << nodesExpanded << " nodes (DFID)" << endl;
 
 }
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------
 template <typename environment>
-void DFID<environment>::DLS(environment *e, uint32_t state, uint32_t goal, int depth){
+void DFID<environment>::DLS(environment *e, uint32_t state, uint32_t goal, int depth, bool &found){
+    uint32_t stateX = (state >> 16);
+    uint32_t stateY = (state & 0x0000ffff);
+    nodesExpanded++;
+
     if(depth <= 0 || state == goal){
+        if(state == goal){
+            found = true;
+        }
         return;
+
+
     }
     else if(depth > 0){
+
+
         std::vector<int> moves = {};
         e->GetActions(state, moves);
 
         for(int move: moves){
             if(move == 1){
-                DLS( e, (((((state >> 16) + 1) << 16) | (state & 0x0000ffff))), goal, depth--);
+                DLS( e, (((((state >> 16) + 1) << 16) | (state & 0x0000ffff))), goal, depth-1, found);
             }
 
+
+
             if(move == e->getLen()){
-                DLS(e, state++, goal, depth--);
+                DLS(e, state+1, goal, depth-1, found);
+            }
+
+            if(found == true) {
+                return;
             }
         }
-        }
+    }
 }
 
 //----------------------------------------------------------------------------------------------
