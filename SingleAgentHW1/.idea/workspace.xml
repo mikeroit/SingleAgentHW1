@@ -11,16 +11,8 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b09133-dbe1-4611-a061-d3652aa32d72" name="Default" comment="finished! main contains test blocks">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/N_array.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/N_array.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/SingleAgentHW1.iml" afterPath="$PROJECT_DIR$/.idea/SingleAgentHW1.iml" />
+    <list default="true" id="17b09133-dbe1-4611-a061-d3652aa32d72" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grid.cpp" afterPath="$PROJECT_DIR$/Grid.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Grid.h" afterPath="$PROJECT_DIR$/Grid.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_RAL.h" afterPath="$PROJECT_DIR$/_RAL.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
     </list>
     <ignored path="SingleAgentHW1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -420,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1459567303151</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finished! main contains test blocks">
+      <created>1459572287856</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1459572287856</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
