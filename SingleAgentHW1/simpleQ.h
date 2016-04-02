@@ -5,7 +5,6 @@
 #ifndef SINGLEAGENTHW1_SIMPLEQ_H
 #define SINGLEAGENTHW1_SIMPLEQ_H
 
-#endif //SINGLEAGENTHW1_SIMPLEQ_H
 
 using namespace std;
 
@@ -23,6 +22,8 @@ class simpleQ{
 
 //      enqueue the next item at the tail of the queue.
         void Add(T value);
+
+        void AddHead(T value);
 
 //      dequeue the next queue element and store it in "item" variable.  The function returns
 //      false if the queue is empty and no item can be retrieved.
@@ -132,7 +133,7 @@ bool simpleQ<T>::Remove(T &item){
 
 //-------------------------------------------------------------------------------------------------------
 template <typename T>
-void simpleQ<T>::Print(){
+    void simpleQ<T>::Print(){
     QueueItem* temp = head;
     while (temp != NULL){
         std::cout << temp->item << std::endl;
@@ -140,3 +141,21 @@ void simpleQ<T>::Print(){
     }
 }
 //-------------------------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------------------------
+template <typename T>
+void simpleQ<T>::AddHead(T value){
+    //Make a node to insert, point to NULL
+    QueueItem *temp = new QueueItem;
+
+    temp->item = value;
+    if (!(tail == NULL)){
+        temp->next = head;
+        head = temp;
+    }
+    else{
+        tail = temp;
+    }
+}
+//-------------------------------------------------------------------------------------------------------
+#endif //SINGLEAGENTHW1_SIMPLEQ_H

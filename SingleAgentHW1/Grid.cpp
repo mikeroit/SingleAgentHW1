@@ -19,19 +19,19 @@ void Grid::GetActions(uint32_t &nodeID, std::vector<int> &actions){
 
 //  test to see if moving up/right is legal, add legal moves
     if(x + 1 < sideLen){
-        actions.push_back(x + 1);
+        actions.push_back(1);
     }
     if((y + 1) < sideLen){
-        actions.push_back(y + sideLen);
+        actions.push_back(sideLen);
     }
 }
 
 void Grid::ApplyAction(uint32_t &state, int action){
-
+    state += action;
 }
 
 void Grid::UndoAction(uint32_t &state, int action){
-
+    state -= action;
 }
 
 //-------------------------------------------------------------------------

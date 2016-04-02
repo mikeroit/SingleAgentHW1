@@ -33,15 +33,15 @@ public:
 
     int getLen(){return sideLen;}
 
-private:
-//  Given the implicit nature of the problem, the only required info
-//  to describe the domain is a side length (square domains only)
-    int sideLen;
-
 //  Private methods will be used to parse the node addresses from uint32_t
 //  --> x/y values
     int getX(uint32_t &nodeID);
     int getY(uint32_t &nodeID);
+
+private:
+//  Given the implicit nature of the problem, the only required info
+//  to describe the domain is a side length (square domains only)
+    int sideLen;
 
 };
 //-------------------------------------------------------------------------
