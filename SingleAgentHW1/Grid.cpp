@@ -10,19 +10,19 @@
 //-------------------------------------------------------------------------
 //Public Methods:
 
-void Grid::GetActions(uint32_t &nodeID, std::vector<int> &actions){
+void Grid::GetActions(uint32_t &nodeID, std::vector<uint32_t> &actions){
 
 //  fetch x and y coord of current state
-    int x, y;
+    uint32_t x, y;
     x = getX(nodeID);
     y = getY(nodeID);
 
 //  test to see if moving up/right is legal, add legal moves
     if(x + 1 < sideLen){
-        actions.push_back(1);
+        actions.push_back( ((x + 1) << 16) | y );
     }
     if((y + 1) < sideLen){
-        actions.push_back(sideLen);
+        actions.push_back(nodeID + 1);
     }
 }
 

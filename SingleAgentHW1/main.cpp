@@ -3,13 +3,14 @@
 #include "simpleQ.h"
 #include "Grid.h"
 #include "_RAL.h"
+#include "N_array.h"
 
 
 using namespace std;
 
 int main() {
 
-
+/*
 //-----------------------------------------   *** TESTING FOR 'simpleQ' *** -----------------------------------------
 
 //  1) make a simpleQ to test on
@@ -48,7 +49,7 @@ int main() {
     Grid testG = Grid(100);
 
 //  make a place to store actions
-    std::vector<int> myActions = {};
+    std::vector<uint32_t> myActions = {};
 
 //  ----------------------------------------------------------------------------
 //  test non-corner cases:
@@ -124,21 +125,51 @@ int main() {
         cout << endl;
 
 //  ----------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+*/
 
 
-
-
-//-----------------------------------------   *** TESTING FOR BFS (Grid) *** --------------------------------
+//------------------------------------------------   *** TESTING FOR Grid Domain ***   --------------------------------------
 
     Grid *testG2 = new Grid();
-    BFS<Grid> *testBFS = new BFS<Grid>(testG2, 0x1000a);
+
+
+    cout << "Testing BFS on Grid. Values: (1, 1), (2, 2), (4, 4), (8, 8)" << endl;
+    for(int i = 0; i < 4; i++){
+        cout << ". . . . testing (" << pow(2, i) << ", " << pow(2, i) << ")" << endl;
+        BFS<Grid> *testBFS = new BFS<Grid>(testG2, (((uint32_t) (pow(2, i)) << 16) | ((uint32_t) (pow(2, i)))));
+        delete testBFS;
+    }
+
+    cout << endl << "Testing DFID on Grid. Values: (1, 1), (2, 2), (4, 4), (8, 8)" << endl;
+    for(int i = 0; i < 4; i++){
+        cout << ". . . . testing (" << pow(2, i) << ", " << pow(2, i) << ")" << endl;
+        DFID<Grid> *testDFID = new DFID<Grid>(testG2, (((uint32_t) (pow(2, i)) << 16) | ((uint32_t) (pow(2, i)))));
+        delete testDFID;
+    }
+
+
 
 //-------------------------------------------------------------------------------------------------------------------
+cout << endl;
+//-----------------------------------------------   *** TESTING FOR DFID ***   --------------------------------------
+    N_array *narray = new N_array(2, 10);
 
-//-----------------------------------------   *** TESTING FOR DFID (Grid) *** --------------------------------
+    cout << "Testing BFS on N_Array. Values: 1, 10, 100, 1000" << endl;
+    for(int i = 0; i < 4; i++){
+        cout << ". . . . testing " << pow(10, i) << endl;
+        BFS<N_array> *testBFS2 = new BFS<N_array>(narray, pow(10, i));;
+        delete testBFS2;
+    }
 
-Grid *testG3 = new Grid();
-DFID<Grid> *testDFID = new DFID<Grid>(testG3, 0x1000a);
+    cout << endl << "Testing DFID on N_Array. Values: 1, 10, 100, 1000" << endl;
+    for(int i = 0; i < 4; i++){
+        cout << ". . . . testing (" << pow(2, i) << ", " << pow(2, i) << ")" << endl;
+        DFID<N_array> *testDFID2 = new DFID<N_array>(narray, pow(10, i));
+        delete testDFID2;
+    }
+
+
 
 //-------------------------------------------------------------------------------------------------------------------
 

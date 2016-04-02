@@ -20,7 +20,7 @@
 
 using namespace std;
 
-//--------------------------------------------   ***   Breadth First   ***   --------------------------------------------
+//------------------------------------------   ***   Breadth First   ***   ------------------------------------------
 //----------------------------------------------------------------------------------------------
 template <typename environment>
 class BFS{
@@ -62,25 +62,12 @@ BFS<environment>::BFS(environment *e, int goal){
         if(stateToExpand == goal) break;
 
 //      expand removed node and add children to open
-        std::vector<int> moves = {}; e->GetActions(stateToExpand, moves);
+        std::vector<uint32_t> moves = {}; e->GetActions(stateToExpand, moves);
         for(int move : moves){
-
-            if(move == 1){
-                uint32_t temp = (((stateToExpand >> 16) + 1) << 16) | (stateToExpand & 0x0000ffff);
-                if(std::find(expandedNodes.begin(), expandedNodes.end(), temp) == expandedNodes.end()){
-                    openList->Add( temp );
-                    expandedNodes.push_back(temp);
-                }
+            if(std::find(expandedNodes.begin(), expandedNodes.end(), move) == expandedNodes.end()){
+                openList->Add( move );
+                expandedNodes.push_back(move);
             }
-
-            if(move == e->getLen()){
-                uint32_t temp = (stateToExpand + 1);
-                if(std::find(expandedNodes.begin(), expandedNodes.end(), temp) == expandedNodes.end()){
-                    openList->Add( temp );
-                    expandedNodes.push_back(temp);
-                }
-            }
-
         }
     }
 
@@ -88,10 +75,10 @@ BFS<environment>::BFS(environment *e, int goal){
 };
 //----------------------------------------------------------------------------------------------
 
-//-----------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
 
 
-//---------------------------------------------   ***   Depth First   ***   ---------------------------------------------
+//-------------------------------------------   ***   Depth First   ***   -------------------------------------------
 
 //----------------------------------------------------------------------------------------------
 //Depth - First iterative deepening algorithm
@@ -151,20 +138,11 @@ void DFID<environment>::DLS(environment *e, uint32_t state, uint32_t goal, int d
     else if(depth > 0){
 
 
-        std::vector<int> moves = {};
+        std::vector<uint32_t> moves = {};
         e->GetActions(state, moves);
 
         for(int move: moves){
-            if(move == 1){
-                DLS( e, (((((state >> 16) + 1) << 16) | (state & 0x0000ffff))), goal, depth-1, found);
-            }
-
-
-
-            if(move == e->getLen()){
-                DLS(e, state+1, goal, depth-1, found);
-            }
-
+            DLS( e, move, goal, depth-1, found);
             if(found == true) {
                 return;
             }
@@ -175,7 +153,7 @@ void DFID<environment>::DLS(environment *e, uint32_t state, uint32_t goal, int d
 //----------------------------------------------------------------------------------------------
 
 
-//-----------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
 
 
 
